@@ -44,11 +44,16 @@ public class ImageGenerator {
         for (int i = 0; i < 150; i++) {
             int randomXPosition = rand.nextInt(WIDTH);
             int randomYPosition = rand.nextInt(HEIGHT);
-            //drawCircle(randomXPosition, randomYPosition, 1, WHITE, WHITE);
-
-            drawRect(200, 100, 50, 200, WHITE);
-
+            drawCircle(randomXPosition, randomYPosition, 1, WHITE, WHITE);
         }
+
+        drawRect(200, 100, 50, 200, WHITE);
+        drawRect(400, 300, 50, 200, SILVER);
+        drawRect(300, 200, 50, 200, LIGHT_RED);
+        drawCircle(800, 300, 25, BLACK, BLACK);
+        drawCircle(100, 400, 30, BLUE, GREEN);
+
+
     }
 
     private void drawRect(int left, int top, int width, int height, Color color) {
@@ -68,7 +73,10 @@ public class ImageGenerator {
         for (int row = centerY - radius; row <= centerY + radius; row++) {
             for (int col = centerX - radius; col <= centerX + radius; col++) {
                 if ((col - centerX) * (col - centerX) + (row - centerY) * (row - centerY) <= radius * radius) {
-                    image[row][col] = color; // Simplified for uniform color
+                    if(col >= 0 && col < WIDTH && row >= 0 && row < HEIGHT)
+                    {
+                        image[row][col] = color; // Simplified for uniform color
+                    }
                 }
             }
         }
